@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <style>
-/*            html, body {
+            html, body {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
@@ -61,7 +61,7 @@
 
             .m-b-md {
                 margin-bottom: 30px;
-            }*/
+            }
         </style>
     </head>
     <body>
@@ -83,11 +83,17 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <form method="GET" action="{{ url('/formulario') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="empresa" value="20170002EMP">
+                        <!-- <button type="submit">enviar</button> -->
+                        <a type="submit" href="{{ url('/formulario?empresa=20170002EMP') }}">Formulario</a>
+                    </form>
+                    
+                   <!--  <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
                 </div>
             </div>
         </div>

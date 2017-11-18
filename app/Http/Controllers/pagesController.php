@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class pagesController extends Controller
 {
-    public function form()
+    public function form(Request $request)
     {
-    	 return view('form');
+    	//dd($request->all());
+    	$empresa=$request->input('empresa');
+    	 return view('form')->with('empresa',$empresa);
     }
 
     public function guardar(Request $request)
@@ -20,10 +22,21 @@ class pagesController extends Controller
 
     	$formulario=new Formulario;
 
-    	$formulario->data= $request->input('nombre');
+    	$data=array(
+    		'nombre' => $request->input('nombre'),
+    		'correo' => $request->input('correo')
+    	);
+
+    	//$formulario->data= $request->input('nombre');
+
+    	$formulario->cod_empresa = $request->input('empresa');
+
+    	$formulario->data = serialize($data);
 
     	$formulario->save();
     	
-    	return 'guardado';
+    	return view('welcome');
+
+    	//return 'guardado';
     }
 }
